@@ -12,3 +12,12 @@ using a public broker iot
 
 to do list 
 using my broker 
+to connect with esp8266
+
+sources 
+http://www.hivemq.com/blog/mqtt-client-library-mqtt-js
+https://www.tutorialspoint.com/nodejs/index.htm
+http://blog.hekkers.net/2012/10/13/realtime-data-with-mqtt-node-js-mqtt-js-and-socket-io/
+https://www.youtube.com/watch?feature=player_embedded&v=WE7GVIFRV7Q
+https://github.com/mqtt/mqtt.github.io/wiki/public_brokers
+https://nodered.org/docs/creating-nodes/packaging
