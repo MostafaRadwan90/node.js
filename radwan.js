@@ -3,7 +3,7 @@ var client  = mqtt.connect('mqtt://iot.eclipse.org')
 
 client.on('connect', function () {
   client.subscribe('radwan')
-  client.publish('radwan', 'Hello mqtt')
+  client.publish('radwan', 'Hello mqtt yahoo')
 })
 
 client.on('message', function (topic, message) {
