@@ -1,0 +1,64 @@
+
+
+var mqtt = require('/usr/local/bin/mqtt');
+
+// Don't forget to update accessToken constant with your device access token
+const thingsboardHost = "iot.eclipse.org";
+
+
+console.log('Connecting to: %s using access token: %s', thingsboardHost);
+var client  = mqtt.connect('mqtt://'+ thingsboardHost);
+
+// to look every second  use  setInterval(sub, 1000)  , sub is fuction 
+
+
+
+// what i learned here that you should donot sub and publish on same topic to avoid duplicate
+client.subscribe('radwan1');
+ client.subscribe('radwan2'); // adding anther topic
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+console.log(message.toString());
+console.log(topic);
+// added by radwan
+
+if (topic=="radwan1")
+{
+   var recieved=message.toString() ;
+
+
+   if (recieved=='y')
+      {
+        client.publish('radwan',"i got it");
+      }
+   if (recieved=='close')
+      {
+        console.log("he wanna close");
+        client.end();   // will terminat the program if you comment stdin part 
+      }
+}
+
+if (topic=="radwan2" && message.toString()=="y" )
+{
+
+        client.publish('radwan',"hey i can listen to many topics");
+      
+
+}
+ // client.end(); i comment this to make listenning forever
+});
+
+
+var stdin = process.openStdin();
+
+stdin.addListener("data", function(d) {
+    // note:  d is an object, and when converted to a string it will
+    // end with a linefeed.  so we (rather crudely) account for that  
+    // with toString() and then trim() 
+    console.log("you entered: [" + 
+        d.toString().trim() + "]");
+client.publish('radwan',d.toString().trim());
+  })
+
+
