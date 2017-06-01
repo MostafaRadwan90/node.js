@@ -2,18 +2,22 @@
 var mqtt = require('/usr/local/bin/mqtt');
 
 // Don't forget to update accessToken constant with your device access token
-const thingsboardHost = "iot.eclipse.org";
+const thingsboardHost = "m12.cloudmqtt.com";
 
 
 console.log('Connecting to: %s using access token: %s', thingsboardHost);
-var client  = mqtt.connect('mqtt://'+ thingsboardHost,"radwan","12345678");
+var client  = mqtt.connect('mqtt://'+ thingsboardHost,{
+username:'Mostafa.Radwan',
+password:'024927138',
+port:'12093'
+ });
 
 // to look every second  use  setInterval(sub, 1000)  , sub is fuction 
 
 
 
 // what i learned here that you should donot sub and publish on same topic to avoid duplicate
-client.subscribe('radwan1');
+client.subscribe('radwan');
  
 
 client.on('message', function (topic, message) {

@@ -1,7 +1,8 @@
-var mqtt = require('mqtt');
+
+var mqtt = require('/usr/local/bin/mqtt');
 
 // Don't forget to update accessToken constant with your device access token
-const thingsboardHost = "iot.eclipse.org";
+const thingsboardHost = "m12.cloudmqtt.com";
 // const accessToken = "9iVW44sUFyFjonL2xavX";
 const minTemperature = 17.5, maxTemperature = 30, minHumidity = 12, maxHumidity = 90;
 
@@ -13,7 +14,12 @@ var data = {
 
 // Initialization of mqtt client using Thingsboard host and device access token
 console.log('Connecting to: %s using access token: %s', thingsboardHost);
-var client  = mqtt.connect('mqtt://'+ thingsboardHost);
+var client  = mqtt.connect('mqtt://'+ thingsboardHost,
+{
+username:'Mostafa.Radwan',
+password:'024927138',
+port:'12093'
+ });
 
 // Triggers when client is successfully connected to the Thingsboard server
 client.on('connect', function () {

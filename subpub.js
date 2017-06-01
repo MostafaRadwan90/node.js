@@ -3,11 +3,11 @@
 var mqtt = require('/usr/local/bin/mqtt');
 
 // Don't forget to update accessToken constant with your device access token
-const thingsboardHost = "iot.eclipse.org";
+const thingsboardHost = "http://ide50-mostafa-radwan90.cs50.io/";
 
 
 console.log('Connecting to: %s using access token: %s', thingsboardHost);
-var client  = mqtt.connect('mqtt://'+ thingsboardHost);
+var client  = mqtt.connect(thingsboardHost);
 
 // to look every second  use  setInterval(sub, 1000)  , sub is fuction 
 
@@ -24,7 +24,7 @@ var recieved=message.toString() ;
 
 if (recieved=='y')
 {
-client.publish('radwan',"i got it");
+client.publish('mqtt',"i got it");
 }
 
 
