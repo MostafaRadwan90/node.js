@@ -30,7 +30,7 @@ setInterval(function () {
         console.log(item);
         client.publish('radwan', item);
     }
-}, 90000);
+}, 300000);
 
 
 rl.on('line', function(input) {
